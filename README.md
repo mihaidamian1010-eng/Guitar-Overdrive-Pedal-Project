@@ -1,52 +1,48 @@
-# Guitar-Overdrive-Pedal-Project
+# Ibanez Tube Screamer Clone - PCB & PCBA Design
 
-# Ibanez Tube Screamer Clone - PCB Design in KiCad
+Acesta este un proiect hardware complet open-source care replică topologia faimoasei pedale de efecte **Ibanez Tube Screamer (TS808/TS9)**. 
+Proiectul a fost desenat de la zero în KiCad și este optimizat special pentru fabricație automatizată (PCBA - Printed Circuit Board Assembly).
 
-Acest repository conține proiectarea completă (schemă electrică și cablaj imprimat) pentru o clonă a legendarei pedale de efecte pentru chitară, Ibanez Tube Screamer (TS808/TS9). 
+## 🌟 Caracteristici Principale
+* **Tehnologie SMD:** Toate componentele pasive sunt în format **0603**, iar circuitul integrat (NJM4558) folosește capsula **SOIC-8**. Designul este gândit pentru eficiență și asamblare robotizată (*Pick and Place*).
+* **Off-board Wiring:** Potențiometrele și mufele Jack folosesc conexiuni tip Pin Header (2.54mm) pentru a fi montate mecanic pe carcasa metalică și cablate ulterior, permițând flexibilitate în alegerea cutiei (ex: 1590B).
+* **Zgomot Redus (Low Noise):** Implementarea unor planuri de masă (GND Pour) pe ambele fețe ale cablajului (Top & Bottom) pentru o ecranare electromagnetică superioară și reducerea zgomotului de fond.
+* **Gata de Fabricare:** Proiectul include setul complet de fișiere de fabricație (Gerber, Drill, BOM, CPL).
 
-Proiectul a fost realizat de la zero în **KiCad 8** (sau versiunea ta) și este optimizat pentru asamblare automatizată (PCBA) folosind componente de suprafață (SMD).
+---
 
-## 📌 Obiectivele Proiectului
-* **Reverse Engineering & Analiză:** Înțelegerea și recrearea unuia dintre cele mai faimoase circuite de overdrive din istoria muzicii.
-* **Design pentru Fabricație (DFM):** Trecerea de la componente clasice THT la componente SMD (format 0603) pentru a permite asamblarea robotizată (Pick and Place).
-* **Organizare Hibridă:** Utilizarea conectorilor de tip Pin Header pentru interfațarea componentelor mecanice (potențiometre și mufe Jack) montate pe carcasa metalică.
+## 📸 Prezentare Vizuală
+
+### Randare 3D a Cablajului
+![3D Render](link_catre_poza_3D.png)
+*(Notă: Placa asamblată, pregătită pentru integrarea în carcasă)*
+
+### Schema Electrică
+![Schematic](link_catre_schema.png)
 
 ---
 
 ## 🧠 Arhitectura Circuitului
+Designul respectă topologia clasică în 4 etaje de procesare a semnalului:
 
-Circuitul pedalei este împărțit în 4 blocuri funcționale principale:
-
-1. **Input Buffer (Repetor pe emitor):** Un etaj cu tranzistorul `2N3904` care preia semnalul chitarei (impedanță mare) și îl adaptează pentru restul circuitului, prevenind pierderea frecvențelor înalte.
-2. **Clipping Amplifier (Inima pedalei):** Utilizează prima jumătate a amplificatorului operațional `NJM4558`. Aici are loc distorsiunea prin limitare activă (soft clipping) folosind o pereche de diode `1N4148` montate antiparalel în bucla de reacție.
-3. **Tone Control (Filtru Activ):** Utilizează a doua jumătate a cipului `NJM4558` configurată ca filtru activ RC pentru a mixa frecvențele înalte cu cele joase, permițând ajustarea "culorii" sunetului.
-4. **Output Buffer:** Un al doilea etaj cu tranzistor `2N3904` care scade impedanța de ieșire, permițând semnalului să parcurgă cabluri lungi spre amplificator fără degradări.
-
+1. **Input Buffer (2N3904):** Repetor pe emitor pentru adaptarea impedanței. Preia semnalul de impedanță mare al dozelor chitarei și previne pierderea frecvențelor înalte.
+2. **Clipping Amplifier (NJM4558 + 1N4148):** Inima pedalei. Generează distorsiunea de tip *soft-clipping* prin plasarea diodelor antiparalel direct în bucla de reacție a amplificatorului operațional.
+3. **Tone Control (NJM4558):** Filtru activ RC utilizat pentru ajustarea răspunsului în frecvență (mixajul între frecvențele tăioase și cele calde).
+4. **Output Buffer (2N3904):** Scade impedanța de ieșire pentru a menține integritatea semnalului pe cabluri lungi, spre amplificator.
 
 ---
 
-## 📐 Schema Electrică (Schematic)
-
-Schema logică a fost realizată respectând standardele de desen tehnic electronic, incluzând verificarea regulilor electrice (ERC passed) și gestionarea corectă a referințelor de alimentare (PWR_FLAGS).
-
-![Schematic](link_catre_poza_ta_cu_schema.png)
----
-
-## 🛠️ Stadiul Curent al Proiectului
-
-- [x] Analiza schemei de bază (ElectroSmash)
-- [x] Crearea schemei electrice în KiCad
-- [x] Atribuirea amprentelor fizice (Footprints - tranzitie spre SMD 0603, SOIC-8)
-- [x] Verificare ERC (Electrical Rules Checker)
-- [ ] Amplasarea componentelor pe PCB (Placement / Layout)
-- [ ] Rutarea traseelor de cupru (Routing & GND Pour)
-- [ ] Generarea fișierelor de fabricație (Gerber & Drill files)
+## 📂 Structura Repository-ului
+* `*.kicad_sch` & `*.kicad_pcb` -> Fișierele sursă editabile (necesită KiCad 8.0 sau mai nou).
+* `Arhiva .zip` -> Conține tot necesarul pentru producători (JLCPCB / PCBWay).
 
 ---
 
-## 📂 Cum să deschizi acest proiect
-
-Pentru a vizualiza sau edita proiectul, ai nevoie de [KiCad EDA](https://www.kicad.org/) (versiune recomandată: 8.0+).
-1. Clonează acest repository: `git clone [link-ul-tau-de-github]`
-2. Deschide fișierul `.kicad_pro` din folderul principal.
-3. Poți naviga independent în `Schematic Editor` sau `PCB Editor`.
+## 🛠️ Cum să fabrici această placă
+Proiectul este gândit pentru a fi trimis direct la o fabrică de cablaje care oferă servicii de asamblare:
+1. Mergi pe site-ul producătorului (ex: JLCPCB).
+2. Încarcă arhiva `.zip` generată din KiCad.
+3. Bifează opțiunea **PCBA** (Asamblare componente).
+4. Sistemul va citi automat fișierele BOM și CPL/POS pentru a plasa componentele SMD pe placă.
+5. La primirea pachetului fizic, lipiți doar firele (Off-board wiring) pentru `RV1`, `RV2`, `RV3` și mufele Jack `J1`, `J2`, `J3`.
+   
