@@ -15,10 +15,12 @@ Proiectul a fost desenat de la zero în KiCad și este optimizat special pentru 
 
 ### Randare 3D a Cablajului
 ![3D Render](https://cdn.discordapp.com/attachments/947587161358737498/1487085522697588766/image.png?ex=69c7dbd1&is=69c68a51&hm=5ccb127032fb3ded1cbe390651e73cfb145a509e59e39417e37487a6ef0a9994&)
+
 *(Notă: Placa asamblată, pregătită pentru integrarea în carcasă)*
 
 ### Schema Electrică
-![Schematic](link_catre_schema.png)
+![Schematic](https://cdn.discordapp.com/attachments/947587161358737498/1487104220783182086/image.png?ex=69c7ed3b&is=69c69bbb&hm=2604f89e2e134c5d5800c56c90fce95c81364064643851fa907535d5adfa52e2&)
+
 
 ---
 
