@@ -14,7 +14,7 @@ Proiectul a fost desenat de la zero în KiCad și este optimizat special pentru 
 ## 📸 Prezentare Vizuală
 
 ### Randare 3D a Cablajului
-![3D Render](link_catre_poza_3D.png)
+![3D Render](https://cdn.discordapp.com/attachments/947587161358737498/1487085522697588766/image.png?ex=69c7dbd1&is=69c68a51&hm=5ccb127032fb3ded1cbe390651e73cfb145a509e59e39417e37487a6ef0a9994&)
 *(Notă: Placa asamblată, pregătită pentru integrarea în carcasă)*
 
 ### Schema Electrică
@@ -34,8 +34,9 @@ Designul respectă topologia clasică în 4 etaje de procesare a semnalului:
 
 ## 📂 Structura Repository-ului
 * `*.kicad_sch` & `*.kicad_pcb` -> Fișierele sursă editabile (necesită KiCad 8.0 sau mai nou).
-* `Arhiva .zip` -> Conține tot necesarul pentru producători (JLCPCB / PCBWay).
 
+* `Arhiva .zip` -> Conține tot necesarul pentru producători (JLCPCB / PCBWay).
+[Overdrive_Pedal.zip](https://github.com/user-attachments/files/26306992/Overdrive_Pedal.zip)
 ---
 
 ## 🛠️ Cum să fabrici această placă
